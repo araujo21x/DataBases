@@ -7,4 +7,4 @@ Meus estudos e anotações sobre Banco de dados
 
 ## NoSQL
 
-* [MongoDB](/NoSQL/MongoDB/MongoDB).
+* [MongoDB](../NoSQL/MongoDB/MongoDB).
