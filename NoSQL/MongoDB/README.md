@@ -1,3 +1,3 @@
 # MongoDB
 
-* [Instalação e execução](./Instalação);
+* [Instalação e execução](./Instalação e execução);
