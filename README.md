@@ -7,4 +7,4 @@ Meus estudos e anotações sobre Banco de dados
 
 ## NoSQL
 
-* [MongoDB](./NoSQL/MongoDB/MongoDB).
+* [MongoDB](https://github.com/araujo21x/DataBases/tree/master/NoSQL/MongoDB).
