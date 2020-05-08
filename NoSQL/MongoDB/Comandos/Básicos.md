@@ -27,12 +27,12 @@ db.pessoas.insert({
     "sobrenome" : "Araujo",
     "habilidades": [
         {"nome" : "MongoDB",
-        "nível" : "Iniciante"}
+        "nivel" : "Iniciante"}
         ]
     })
 ```
 ## Procurar no Banco
-Para pegar uma coleção no mongoDb, primeiro informa qual a coleção, escolhe a função que nesse caso será find, senão informa o parâmetro irá retornar todos os itens da coleção:
+Para pegar uma coleção no mongoDb, primeiro informa qual a coleção, escolhe a função que nesse caso será find,informa os parametros em forma de JSON, caso não informe o parâmetro irá retornar todos os itens da coleção:
 
 ```
 db.<coleção>.find(<dados>)
@@ -51,6 +51,7 @@ Ex:
     }
         
 ```
+
 ## Remover no Banco
 Informa qual a coleção, escolhe a função que nesse caso será remove e informa um parâmetro para encontrar usuários para exclusão:
 
@@ -62,3 +63,42 @@ Ex:
 ```
 
 ## Editar no Banco
+Informa qual a coleção, escolhe a função que nesse caso será update e informa um parâmetro para encontrar usuários e outro para modificar:
+
+* Para modificar apenas um campo utiliza "$set:" exemplo, {$set: {"nome": "Novo nome"}}, caso não utilizar "$set" será modificada toda a coleção, nessa por exemplo iria ficar "nome": "Novo nome" e os outros campos seriam apagados.
+
+* Por padrão o update no MongoDb só vai modificar o primeiro usuário encontrado, mas ao utiliza o comando "$set", caso deseje mudar varios usuário é nescessário informar um outro parâmetro;
+
+```
+db.<coleção>.update(<parâmetro de pesquisa>, <parâmetro com a mudança>, <parametro vários usuários>)
+
+EX:
+
+
+db.pessoas.update({"nome":"Lucas"}, {$set: {"nome":"Novo nome"} }, {multi: true})
+
+```
+### OR e IN
+
+Quando quiser usar mais de um parâmetro do mesmo tipo como parâmetro pode utilizar o "or":
+```
+db.pessoas.find({ $or:[{"sobrenome":"Araujo"},{"sobrenome":"Paulo"}]}).pretty()
+
+```
+Quando quiser que procure por um usuário contento dois dados utiliza-se o "in"
+```
+
+```
+
+### array
+
+* Array tem alguns comandos como $push, $each entre outras;
+
+* Para modificar um array de objetos
+```
+db.pessoas.update(
+    {"habilidades.nivel" : "Iniciante"}, 
+    {$set: { "habilidades.$.nivel": "básica" }},
+    {multi: true}
+    )
+```

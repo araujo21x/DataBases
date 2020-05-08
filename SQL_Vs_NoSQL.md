@@ -1,4 +1,4 @@
-#Diferença entre SQL e NoSQL
+# Diferença entre SQL e NoSQL
 
 - MongoDB oferece maior Liberdade de estrutura, uma coleção não tem uma estrutura de dados fixos igual uma tabela SQL, Exemplo um site de E-commerce já que pode existe uma liberdade para a descrição dos produtos;
 
