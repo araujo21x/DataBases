@@ -5,14 +5,35 @@
  
 - O parâmetro JSON segue o padrão de objeto JavaScript nele é opcional o uso de "" nas chaves, exemplo "nome" : "Lucas" \ nome : "Lucas", mas é uma boa prática o uso das aspas.
 
-## Criar Coleções
+## Coleções
+
 Uma coleção e como se fosse uma tabela de um banco SQL, mas os campos só são informados durante a inserção no banco.
 
+#### Criar 
 ```
 db.creatCollections("nome da Coleção")
 
 Ex:
 db.creatCollections("pessoas")
+```
+
+#### Usar
+```
+use <nome da coleção>;
+
+use pessoas;
+```
+#### Deletar 
+```
+db.<nome da coleção>.drop()
+
+Ex:
+db.pessoas.drop()
+```
+
+#### Listar 
+```
+db.getCollectionsNames()
 ```
 
 ## Inserir no Banco
@@ -33,6 +54,7 @@ db.pessoas.insert({
 ```
 ## Procurar no Banco
 Para pegar uma coleção no mongoDb, primeiro informa qual a coleção, escolhe a função que nesse caso será find,informa os parametros em forma de JSON, caso não informe o parâmetro irá retornar todos os itens da coleção:
+* Caso não desejo todos os todos os dados, só precisa passar um segundo parametro com o campo e 1(true);
 
 ```
 db.<coleção>.find(<dados>)
@@ -42,13 +64,9 @@ Ex:
     Vai retorna todos os usuários. 
     
     db.pessoas.find({"_id" : ObjectId("5eb36e2a6df8e42ee7b2db9c")})
-    { "_id" : ObjectId("5eb36e2a6df8e42ee7b2db9c"),
-        "nome" : "Lucas",
-        "sobrenome" : "Araujo",
-        "habilidades" : [ 
-            { "nome" : "MongoDB", "nível" : "Iniciante" } 
-        ]
-    }
+
+    db.pessoas.find({"_id" : ObjectId("5eb36e2a6df8e42ee7b2db9c")},{"nome": 1, "sobrenome": 1})
+
         
 ```
 
@@ -69,6 +87,8 @@ Informa qual a coleção, escolhe a função que nesse caso será update e infor
 
 * Por padrão o update no MongoDb só vai modificar o primeiro usuário encontrado, mas ao utiliza o comando "$set", caso deseje mudar varios usuário é nescessário informar um outro parâmetro;
 
+* Update atualiza somente o primeiro item encontrado, já UpdateMany vai percorrer todo o banco e atualizar todos que se encaixam no " parâmetro de pesquisa".
+
 ```
 db.<coleção>.update(<parâmetro de pesquisa>, <parâmetro com a mudança>, <parametro vários usuários>)
 
@@ -78,6 +98,24 @@ EX:
 db.pessoas.update({"nome":"Lucas"}, {$set: {"nome":"Novo nome"} }, {multi: true})
 
 ```
+
+## Procurar e atualizar
+No mongo é possivel pegar e atualizar um argumento com o FindOneAndUpdate.
+
+
+```
+db.<coleção>.FindOneAndUpdate(<parâmetro de pesquisa>, <parâmetro com a mudança>)
+
+EX:
+
+
+db.pessoas.FindOneAndUpdate({"nome":"Lucas"}, {$set: {"nome":"Novo nome"} })
+
+```
+
+### projection pesquisar 
+
+### dato historico
 ### OR e IN
 
 Quando quiser usar mais de um parâmetro do mesmo tipo como parâmetro pode utilizar o "or":
@@ -97,7 +135,7 @@ Quando quiser que procure por um usuário contento dois dados utiliza-se o "in"
 * Para modificar um array de objetos
 ```
 db.pessoas.update(
-    {"habilidades.nivel" : "Iniciante"}, 
+    {"habilid ades.nivel" : "Iniciante"}, 
     {$set: { "habilidades.$.nivel": "básica" }},
     {multi: true}
     )
