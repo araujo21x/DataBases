@@ -33,8 +33,8 @@ sudo mongod
 sudo mongod --dbpath <diretório>
 ```
 3. Abrir MongoDB Compass e ir na opção "connect"
-![]()
+![](https://raw.githubusercontent.com/araujo21x/DataBases/master/img/telaInicial.png)
  
 4. O painel do MongoDB Compass
-![]()
+![](https://raw.githubusercontent.com/araujo21x/DataBases/master/img/tela2.png)
  

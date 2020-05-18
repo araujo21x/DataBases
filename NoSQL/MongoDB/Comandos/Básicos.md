@@ -99,7 +99,7 @@ db.pessoas.update({"nome":"Lucas"}, {$set: {"nome":"Novo nome"} }, {multi: true}
 
 ```
 
-## Procurar e atualizar
+## Procurar e Atualizar
 No mongo é possivel pegar e atualizar um argumento com o FindOneAndUpdate.
 
 
@@ -113,9 +113,6 @@ db.pessoas.FindOneAndUpdate({"nome":"Lucas"}, {$set: {"nome":"Novo nome"} })
 
 ```
 
-### projection pesquisar 
-
-### dato historico
 ### OR e IN
 
 Quando quiser usar mais de um parâmetro do mesmo tipo como parâmetro pode utilizar o "or":
@@ -128,7 +125,7 @@ Quando quiser que procure por um usuário contento dois dados utiliza-se o "in"
 
 ```
 
-### array
+### Array
 
 * Array tem alguns comandos como $push, $each entre outras;
 

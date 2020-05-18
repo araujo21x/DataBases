@@ -1,3 +1,3 @@
 # Instalação
 
-* [PostgreSQL](./PostgreSQL).
+* [PostgreSQL](./PostgreSQL.md).
