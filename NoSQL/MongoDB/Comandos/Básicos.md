@@ -11,10 +11,10 @@ Uma coleção e como se fosse uma tabela de um banco SQL, mas os campos só são
 
 #### Criar 
 ```
-db.creatCollections("nome da Coleção")
+db.createCollection("nome da Coleção")
 
 Ex:
-db.creatCollections("pessoas")
+db.createCollection("pessoas")
 ```
 
 #### Usar
