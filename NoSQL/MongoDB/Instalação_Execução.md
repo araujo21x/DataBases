@@ -19,7 +19,10 @@ sudo mongod --dbpath <diretório>
 ```
 mongo
 ```
- 
+## Adicionando Sistema de segurançã 
+
+
+
 ## MongoDB Compass - Arch Linux
  
 É o programa oficial de visualização de dados do MongoDB
