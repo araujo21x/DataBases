@@ -1,5 +1,6 @@
 # Comandos Básicos PostgreSQL
-## Acessar postgre no bash
+
+### Acessar postgre no bash
 ```
 psql -U <nome de usuário>
 ```
